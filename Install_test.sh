@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/bash
 
 RED="\e[31m"
 GREEN="\e[32m"
@@ -6,21 +6,22 @@ BLUE="\e[34m"
 MAGENTA="\e[35m"
 YELLOW="\e[33m"
 ENDCOLOR="\e[0m"
-NC="\033[0m" ## ask about this
 
 printmessage() {
-    printf "${1}${2}${NC}\n" ## ask about this
+    printf "${1}${2}${ENDCOLOR}\n" ## ask about this
 }
 
 ## Welcome banner
 echo -e "${MAGENTA}
-   #                           ###
-  # #   #    # #####  ####      #  #    #  ####  #####   ##   #      #      ###### #####
- #   #  #    #   #   #    #     #  ##   # #        #    #  #  #      #      #      #    #
-#     # #    #   #   #    #     #  # #  #  ####    #   #    # #      #      #####  #    #
-####### #    #   #   #    #     #  #  # #      #   #   ###### #      #      #      #####
-#     # #    #   #   #    #     #  #   ## #    #   #   #    # #      #      #      #   #
-#     #  ####    #    ####     ### #    #  ####    #   #    # ###### ###### ###### #    #
+ ██▓ ███▄    █   ██████ ▄▄▄█████▓ ▄▄▄       ██▓     ██▓    ▓█████  ██▀███
+▓██▒ ██ ▀█   █ ▒██    ▒ ▓  ██▒ ▓▒▒████▄    ▓██▒    ▓██▒    ▓█   ▀ ▓██ ▒ ██▒
+▒██▒▓██  ▀█ ██▒░ ▓██▄   ▒ ▓██░ ▒░▒██  ▀█▄  ▒██░    ▒██░    ▒███   ▓██ ░▄█ ▒
+░██░▓██▒  ▐▌██▒  ▒   ██▒░ ▓██▓ ░ ░██▄▄▄▄██ ▒██░    ▒██░    ▒▓█  ▄ ▒██▀▀█▄
+░██░▒██░   ▓██░▒██████▒▒  ▒██▒ ░  ▓█   ▓██▒░██████▒░██████▒░▒████▒░██▓ ▒██▒
+░▓  ░ ▒░   ▒ ▒ ▒ ▒▓▒ ▒ ░  ▒ ░░    ▒▒   ▓▒█░░ ▒░▓  ░░ ▒░▓  ░░░ ▒░ ░░ ▒▓ ░▒▓░
+ ▒ ░░ ░░   ░ ▒░░ ░▒  ░ ░    ░      ▒   ▒▒ ░░ ░ ▒  ░░ ░ ▒  ░ ░ ░  ░  ░▒ ░ ▒░
+ ▒ ░   ░   ░ ░ ░  ░  ░    ░        ░   ▒     ░ ░     ░ ░      ░     ░░   ░
+ ░           ░       ░                 ░  ░    ░  ░    ░  ░   ░  ░   ░
 
 ${ENDCOLOR}
 "
@@ -56,16 +57,16 @@ echo -e "This script will install the following programs:""$BLUE programs and to
 # if else for choosing appropriate package manager based on what OS the scripts runs on
 
 ## Installation process
-printmessage "$YELLOW" "Installing packages..." "$ENDCOLOR"
+printmessage "$YELLOW" "Installing packages..."
 # $INSTALL_COMMAND $PKGS_TO_INSTALL
-printmessage "$GREEN" "Package installation completed" "$ENDCOLOR"
+printmessage "$GREEN" "Package installation completed"
 
 ## YAY installation
-printmessage "$YELLOW" "Installing YAY..." "$ENDCOLOR"
-printmessage "$GREEN" "Installation complete" "$ENDCOLOR"
+printmessage "$YELLOW" "Installing YAY..."
+printmessage "$GREEN" "Installation complete"
 
 # Shell installation process
-printmessage "$YELLOW" "Installing shell..." "$ENDCOLOR"
+printmessage "$YELLOW" "Installing shell..."
 
 # echo "Choose what shell do you want to use:" (reference https://www.tecmint.com/different-types-of-linux-shells/ )
 # select bash in "B" tcsh in "C" ksh in "K" zsh in "Z" fish in "F"; do
@@ -77,9 +78,9 @@ printmessage "$YELLOW" "Installing shell..." "$ENDCOLOR"
 #     No) exit ;;
 #     esac
 # done
-printmessage "$YELLOW" "Do you want to switch to the new shell ?" "$ENDCOLOR"
+printmessage "$YELLOW" "Do you want to switch to the new shell ?"
 
-printmessage "$GREEN" "Shell installation completed" "$ENDCOLOR"
+printmessage "$GREEN" "Shell installation completed"
 
 ## Script End
-printmessage "$GREEN" "Installer has finished!" "$ENDCOLOR"
+printmessage "$GREEN" "Installer has finished!"
