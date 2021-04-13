@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 RED="\e[31m"
 GREEN="\e[32m"
 BLUE="\e[34m"
@@ -26,17 +28,25 @@ echo -e "${MAGENTA}
 ${ENDCOLOR}
 "
 
+INSTALL_COMMAND=""
+
 ## Detect the platform ## minor questions here(more OS?) (reference here https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script and here https://danielgibbs.co.uk/2013/04/bash-how-to-detect-os/)
+
+getOsAndInstaller(){
 case "$OSTYPE" in
-solaris*) echo -e "You are running:" "$BLUE SOLARIS $ENDCOLOR" ;;
-ubuntu*) echo -e "You are running:" "$BLUE UBUNTU $ENDCOLOR" ;;
+solaris*) echo -e "You are running:" "$BLUE SOLARIS $ENDCOLOR" && INSTALL_COMMAND="banana" ;;
+ubuntu*) echo -e "You are running:" "$BLUE UBUNTU $ENDCOLOR"  && INSTALL_COMMAND="sudo apt install -y" ;;
 debian*) echo -e "You are running:" "$BLUE DEBIAN $ENDCOLOR" ;;
-arch*) echo -e "You are running:" "$BLUE ARCH $ENDCOLOR" ;;
-manjaro*) echo -e "You are running:" "$BLUE MANJARO $ENDCOLOR" ;;
+arch*) echo -e "You are running:" "$BLUE ARCH $ENDCOLOR" && INSTALL_COMMAND="sudo pacman -Suuy --no-confirm" ;;
+manjaro*) echo -e "You are running:" "$BLUE MANJARO $ENDCOLOR" && INSTALL_COMMAND="sudo pacman -Suuy --no-confirm"  ;;
 bsd*) echo -e "You are running:" "$BLUE BSD $ENDCOLOR" ;;
-msys*) echo -e "You are running:" "$BLUE WINDOWS $ENDCOLOR" ;;
+msys*) echo -e "You are running:" "$BLUE WINDOWS $ENDCOLOR" && INSTALL_COMMAND="choco install -y" ;;
 *) echo -e "$RED Unknown: $OSTYPE $ENDCOLOR" ;;
 esac
+}
+
+getOsAndInstaller
+
 
 ## Info about installation
 echo -e "This script will install the following programs:""$BLUE programs and tools and whatever $ENDCOLOR"
@@ -52,7 +62,7 @@ echo -e "This script will install the following programs:""$BLUE programs and to
 #     esac
 # done
 
-# PKGS_TO_INSTALL="names of packages to be installed"
+# PKGS_TO_INSTALL="names of packages to be installed zsh"
 # INSTALL_COMMAND="" (reference https://distrowatch.com/dwres.php?resource=package-management)
 # if else for choosing appropriate package manager based on what OS the scripts runs on
 
