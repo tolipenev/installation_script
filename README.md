@@ -12,6 +12,4 @@
 
 ### VSCode: Source update + APT Repo
 
-## Docker setup
-### Socket/service enable + user added to Docker group
 
