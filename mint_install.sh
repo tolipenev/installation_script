@@ -37,10 +37,10 @@ $INSTALL_COMMAND $PKGS_TO_INSTALL
 printmessage "$GREEN" "Package installation completed"
 
 
-## VSCode setup
+# ## VSCode setup
 printmessage "$BLUE" "Setting up VSCode"
-sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > $HOME/microsoft.gpg
+sudo install -o root -g root -m 644 $HOME/microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
 printmessage "$YELLOW" "Installing VSCode"
@@ -48,22 +48,23 @@ $INSTALL_COMMAND code
 
 ## Shell installation process
 printmessage "$YELLOW" "Installing OhMyZSH..."
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-
-printmessage "$BLUE" "Changing shell..."
-chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" < /dev/null
 
 printmessage "$YELLOW" "Installing shell customizations..."
-sudo git clone --depth 1 git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-sudo git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-sudo git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-sudo ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+git clone --depth 1 git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+sudo git clone --depth 1 https://github.com/denysdovhan/spaceship-prompt.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt
+sudo ln -s ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
 
 
-printmessage "$BLUE" "Copying profile with plugins..."
-cat ./zshrc > $HOME/.zshrc
+# printmessage "$BLUE" "Copying profile with plugins..."
+# cp -i .zshrc > $HOME/.zshrc
+# cp -i .zshrcextra > $HOME/.zshrcextra
 
-printmessage "$GREEN" "Copy done"
+# printmessage "$GREEN" "Copy done"
+
+# printmessage "$BLUE" "Activating theme and plugins"
+# source ${HOME}/.zshrc
 
 printmessage "$GREEN" "Shell installation completed"
 
