@@ -1,10 +1,17 @@
-# Auto-Installation script
-## Features
-## OS Detection
-### Supported OS: $names
-## Shell installation prompts
-### Supported shells : $names
-## List programs to install
-### $names (more to add or remove)
+# Linux Mint Installation script
 
-## Maybe more
+## OhMyZSH installation 
+### Plugins: git colorize npm zsh-autosuggestions zsh-navigation-tools zsh-syntax-highlighting command-not-found cp docker dotenv
+
+### Theme: SpaceShip (https://github.com/denysdovhan/spaceship-prompt)
+
+### Adding extras to .zshrc (theme change and simlink to new theme)
+
+## Package Installation
+### Applications: curl wget git zsh micro xclip apt-transport-https npm p7zip nodejs chromium docker docker-machine docker-compose
+
+### VSCode: Source update + APT Repo
+
+## Docker setup
+### Socket/service enable + user added to Docker group
+
