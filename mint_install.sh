@@ -42,6 +42,7 @@ printmessage "$BLUE" "Setting up VSCode"
 sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > $HOME/microsoft.gpg
 sudo install -o root -g root -m 644 $HOME/microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt update -y
 
 printmessage "$YELLOW" "Installing VSCode"
 $INSTALL_COMMAND code
@@ -57,11 +58,11 @@ sudo git clone --depth 1 https://github.com/denysdovhan/spaceship-prompt.git ${Z
 sudo ln -s ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
 
 
-# printmessage "$BLUE" "Copying profile with plugins..."
-# cp -i .zshrc > $HOME/.zshrc
-# cp -i .zshrcextra > $HOME/.zshrcextra
+printmessage "$BLUE" "Copying profile with plugins..."
+cp -i .zshrc $HOME/.zshrc
+cp -i .zshrcextra $HOME/.zshrcextra
 
-# printmessage "$GREEN" "Copy done"
+printmessage "$GREEN" "Copy done"
 
 # printmessage "$BLUE" "Activating theme and plugins"
 # source ${HOME}/.zshrc
