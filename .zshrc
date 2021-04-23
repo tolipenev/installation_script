@@ -4,7 +4,7 @@ export ZSH=/home/$USER/.oh-my-zsh
 ZSH_THEME="spaceship"
 
 
-plugins=(git colorize npm zsh-autosuggestions zsh-navigation-tools zsh-syntax-highlighting command-not-found cp docker dotenv)
+plugins=(git colorize npm zsh-autosuggestions zsh-navigation-tools zsh-syntax-highlighting command-not-found cp docker)
 
 source $ZSH/oh-my-zsh.sh
 ENABLE_CORRECTION="true"
