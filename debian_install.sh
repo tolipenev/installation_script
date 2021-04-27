@@ -29,7 +29,6 @@ PKGS_TO_INSTALL='curl wget git zsh micro xclip apt-transport-https npm p7zip nod
 sudo apt update && sudo apt dist-upgrade -y
 INSTALL_COMMAND="sudo apt install -y"
 
-
 ## Installation process
 printmessage "$YELLOW" "Installing packages..."
 $INSTALL_COMMAND $PKGS_TO_INSTALL
@@ -45,7 +44,7 @@ printmessage "$YELLOW" "Installing Chrome"
 $INSTALL_COMMAND google-chrome-stable
 ## VSCode Setup
 printmessage "$BLUE" "Setting up VSCode"
-sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > $HOME/microsoft.gpg
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >$HOME/microsoft.gpg
 sudo install -o root -g root -m 644 $HOME/microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update -y
@@ -58,7 +57,7 @@ printmessage "$BLUE" "Changing shell to Zsh"
 chsh -s /usr/bin/zsh
 
 printmessage "$YELLOW" "Installing OhMyZSH..."
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" < /dev/null
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" </dev/null
 
 printmessage "$YELLOW" "Installing shell customizations..."
 
@@ -66,7 +65,6 @@ git clone --depth 1 git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/
 git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 sudo git clone --depth 1 https://github.com/denysdovhan/spaceship-prompt.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt
 sudo ln -s ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
-
 
 printmessage "$BLUE" "Copying profile with plugins..."
 cp -i .zshrc $HOME/.zshrc
