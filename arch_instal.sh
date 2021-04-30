@@ -73,4 +73,5 @@ cp -i .zshrcextra $HOME/.zshrcextra
 printmessage "$GREEN" "Shell installation completed"
 
 ## Script End
+exit 1
 printmessage "$GREEN" "Installer has finished! Reload terminal to finish up!"
